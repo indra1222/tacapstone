@@ -55,8 +55,12 @@ class Config:
     CORS_ORIGINS = [
         'http://localhost:3000', 
         'http://localhost:5000',
-        'https://*.vercel.app',  # Allow all Vercel preview deployments
-        'https://your-frontend-domain.vercel.app'  # Replace with your actual frontend domain
+        'https://*.vercel.app',
+        'https://*.web.app',
+        'https://*.firebaseapp.com',
+        'https://inddra-89ed5.web.app',  # Your Firebase domain
+        'https://inddra-89ed5.firebaseapp.com',  # Your Firebase domain
+        '*'  # Allow all origins for now (remove in production)
     ]
     
     # Session settings
