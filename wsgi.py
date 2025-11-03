@@ -1,4 +1,4 @@
-﻿from flask import Flask
+from flask import Flask
 from flask_cors import CORS
 import os
 
@@ -14,9 +14,14 @@ from routes.api import api
 # ===== FLASK APP INITIALIZATION =====
 app = Flask(__name__)
 
-# CORS configuration for production
-cors_origins = Config.CORS_ORIGINS if hasattr(Config, 'CORS_ORIGINS') else "*"
-CORS(app, supports_credentials=True, resources={r"/*": {"origins": cors_origins}})
+# CORS configuration for production - Allow all origins temporarily
+CORS(app, 
+     supports_credentials=True, 
+     resources={r"/*": {
+         "origins": "*",
+         "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+         "allow_headers": ["Content-Type", "Authorization"]
+     }})
 
 # Load configuration
 app.config["SECRET_KEY"] = Config.SECRET_KEY
